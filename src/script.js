@@ -12,19 +12,19 @@ class ToDoList {
     if (this.LIST[0].description.trim() == "") {
       task_container.innerHTML = `
         <div class="task nothing">
-          <h1 class="message-nothing">Nothing in the localStorage</h1>
+          <h1 class="text-gray-400 w-full text-center text-xl">Nothing in the localStorage</h1>
         </div>
         `;
     } else {
       this.LIST.forEach((elt, index) => {
         elt.status === "checked" ? completed_task++ : uncompleted_task++;
         task_container.innerHTML += `
-        <div class="task" id=${elt.id}>
-              <span class=${elt.status}></span>
-            <p>
+        <div class="w-full flex items-center justify-between gap-3 task" id=${elt.id}>
+              <span class="${elt.status == "checked" ? "bg-green-500 checked" : "bg-gray-400 unchecked"} size-5 rounded-sm"></span>
+            <p class="flex-1 line-clamp-1">
               #${elt.id} ${elt.description}
             </p>
-            <button type="button" value=${elt.id} class="delete_btn" >Delete</button>
+            <button type="button" value=${elt.id} class="delete_btn py-1.5 px-2.5 bg-red-500 rounded-md text-white hover:bg-red-500/90" >Delete</button>
           </div>
         `;
       });
@@ -69,14 +69,15 @@ class ToDoList {
     tasks.forEach((task) => {
       task.addEventListener("click", (event) => {
         // ? If it's delete button
+        console.log("click");
         if (event.target.classList.contains("delete_btn")) return;
 
         const span = task.children[0];
         if (span.classList.contains("unchecked")) {
-          span.classList = "checked";
+          span.classList.add("checked");
           this.change_Status(task.id, true);
         } else {
-          span.classList = "unchecked";
+          span.classList.add("unchecked");
           this.change_Status(task.id, false);
         }
       });
@@ -91,6 +92,9 @@ class ToDoList {
     });
     // ? Update LIST in the localstorage
     localStorage.setItem("TODOList", JSON.stringify(this.LIST));
+
+    // ? Waiting time before reload
+    setTimeout(() => window.location.reload(), 50);
   }
   // ? Task in LIST
   add_task() {

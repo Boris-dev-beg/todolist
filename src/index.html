@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <title>TODOLIST APP</title>
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+  <body
+    class="font-semibold font-[Roboto] flex flex-col items-center justify-center h-screen w-screen bg-gray-100"
+  >
+    <section class="w-[80vw] sm:w-[60vw] lg:w-[50vw] shadow shadow-black/35 p-4 rounded-md h-130">
+      <div class="container flex flex-col gap-3 h-full">
+        <!-- ! Header -->
+        <div class="w-full flex flex-col gap-5 p-3">
+          <h1 class="text-4xl pl-2 tracking-wider">Your To Do</h1>
+          <form
+            id="form"
+            class="w-full flex gap-3 items-center justify-between"
+          >
+            <input
+              type="text"
+              placeholder="Add new task..."
+              id="task"
+              class="focus:outline-none border-b w-full p-2 focus:rounded-md"
+            />
+            <button
+              type="submit"
+              class="w-35 text-center bg-black hover:bg-black/90 text-white py-2 px-2.5 rounded-lg"
+            >
+              Add Task
+            </button>
+          </form>
+        </div>
+        <!-- ! Task list -->
+        <div
+          class="container flex flex-col gap-2 flex-1 h-full overflow-auto"
+          id="task_container"
+        >
+          <!-- Task -->
+          <!-- <div class="task">
+            <span class="checked"></span>
+            <p>
+              This is an example of task #1, This is an example of task #1, This
+              is an example of task #1
+            </p>
+            <button>Delete</button>
+          </div> -->
+          <!-- Task -->
+        </div>
+        <!-- ! Footer -->
+        <div class="flex w-full justify-between items-center font-medium px-3" id="task_status">
+          <!-- ? Status -->
+        </div>
+      </div>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>
